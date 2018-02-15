@@ -1,22 +1,13 @@
 class Complement
+  RNA_Pairs = {
+    'C' => 'G',
+    'G' => 'C',
+    'A' => 'U',
+    'T' => 'A'
+  }
+
   def self.of_dna(strand)
-    compl_strand = ''
-    nucl_array = strand.split('')
-    nucl_array.each do |nucl|
-      if nucl == 'C'
-        compl_strand << 'G'
-      elsif nucl == 'G'
-        compl_strand << 'C'
-      elsif nucl == 'A'
-        compl_strand << 'U'
-      elsif nucl == 'T'
-        compl_strand << 'A'
-      else
-        compl_strand = ''
-        break
-      end
-    end
-    return compl_strand
+    strand.chars.map { |l| RNA_Pairs.has_key?(l) ? RNA_Pairs[l] : (return '') }.join
   end
 end
 
