@@ -1,10 +1,8 @@
 class Pangram
   def self.pangram?(phrase)
     alphabet = ('a'..'z').to_a
-    phrase.downcase.chars.each do |let|
-      if alphabet.include?(let)
-        alphabet.delete(let)
-      end
+    phrase.downcase.chars.each do |letter|
+      alphabet.delete(letter)
     end
     alphabet.empty?
   end
