@@ -6,7 +6,7 @@ School.prototype.add = function(name, grade) {
   if (this.students[grade]) {
     let nameArray = this.students[grade];
     nameArray.push(name);
-    this.students[grade] = nameArray;
+    this.students[grade] = nameArray.sort();
   } else {
     let gradeNames = [];
     gradeNames.push(name);
@@ -19,10 +19,7 @@ School.prototype.grade = function(grade) {
 };
 
 School.prototype.roster = function() {
-  console.log(this.students);
-  return this.students.sort(function(a, b) {
-    return a.value - b.value;
-  });
+  return this.students;
 };
 
 module.exports = School;
