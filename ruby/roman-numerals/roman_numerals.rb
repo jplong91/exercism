@@ -1,37 +1,28 @@
 class Integer
   ROMAN_NUMERALS = {
     1 => 'I',
+    4 => 'IV',
     5 => 'V',
+    9 => 'IX',
     10 => 'X',
+    40 => 'XL',
     50 => 'L',
+    90 => 'XC',
     100 => 'C',
+    400 => 'CD',
     500 => 'D',
+    900 => 'CM',
     1000 => 'M'
   }
 
   def to_roman
-    keys = ROMAN_NUMERALS.keys.reverse
     output = ''
     number = self
-    while number > 0
-      index = 0
-      ROMAN_NUMERALS.reverse_each do |key, value|
-        if number >= key
-          until number < key
-            output << value
-            number -= key
-          end
-        elsif number >= key - keys[index + 1] && !ROMAN_NUMERALS.has_key?(key - keys[index + 1])
-          p 'here'
-          output << ROMAN_NUMERALS[keys[index + 1]]
-          number += keys[index + 1]
-          output << value
-          number -= key
-        end
-        if number == 0
-          break
-        end
-        index != 5 ? index += 1 : index
+    ROMAN_NUMERALS.reverse_each.each do |num, symb|
+      symbol_count = (number / num)
+      if symbol_count >= 1
+        output += symb * symbol_count
+        number -= num * symbol_count
       end
     end
     return output
