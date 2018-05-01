@@ -1,6 +1,7 @@
 var Bob = function() {};
 
 Bob.prototype.hey = function(phrase) {
+  phrase = phrase.trim();
   let output = "Whatever.";
   if (phrase === phrase.toUpperCase() || phrase.to_i) {
     output = "Whoa, chill out!";

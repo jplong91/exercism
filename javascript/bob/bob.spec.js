@@ -53,7 +53,7 @@ describe("Bob", function() {
     expect(result).toEqual("Whoa, chill out!");
   });
 
-  xit("only numbers", function() {
+  it("only numbers", function() {
     var result = bob.hey("1, 2, 3");
     expect(result).toEqual("Whatever.");
   });
